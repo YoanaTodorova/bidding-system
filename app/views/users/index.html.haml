@@ -1,0 +1,6 @@
+%p
+  %ul
+  - @users.each do |user|
+    %li
+      = link_to user_path(user) do
+        %p= user[:name]

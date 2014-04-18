@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+!!!
+%html
+  %head
+    %title Bidding system
+    = stylesheet_link_tag "applicaion", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    =csrf_meta_tags
+
+  %body
+    %ul
+      %li= link_to "Home", controller: "home"
+      %li= link_to "Items", controller: "items"
+      %li= link_to "Users", controller: "users"
+
+    = yield
