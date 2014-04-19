@@ -7,8 +7,14 @@ gem 'haml'
 
 gem 'factory_girl'
 
-#gem 'authlogic' #, '~> 3.4.0'
-#gem 'bcrypt-ruby', '~> 3.1.2'
+#gem 'authlogic', '~> 3.4.1'
+#gem 'bcrypt', '~> 3.1.7'
+#gem 'scrypt', '~> 1.2.1'
+
+gem 'bcrypt-ruby', '~> 3.1.5'
+
+gem 'protected_attributes'
+
 #gem 'scrypt'
 #gem 'bcrypt-ruby', '~> 3.1.5', :require => 'bcrypt'
 #gem 'scrypt', '1.2.1'

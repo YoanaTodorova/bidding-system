@@ -12,5 +12,8 @@
       %li= link_to "Home", controller: "home"
       %li= link_to "Items", controller: "items"
       %li= link_to "Users", controller: "users"
-
+      - if current_user
+        %li= link_to "destroy", signout_path, method: :delete
+      - else
+        %li= link_to "New session", controller: "sessions", action: "new"
     = yield

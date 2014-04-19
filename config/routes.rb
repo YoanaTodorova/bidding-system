@@ -9,10 +9,18 @@ Bidsys::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  resources :home
+
+  resources :items
+
   resources :users do
     resources :comments
   end
 
+  resources :sessions
+
+  match '/signout', to: 'sessions#destroy', via: 'delete'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

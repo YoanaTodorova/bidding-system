@@ -1,2 +1,22 @@
 %p
-  Bidding System
+  %ul
+  - @items.each do |item|
+    %li
+      = link_to item_path(item) do
+        %p= item[:name]
+
+
+= form_for Item.new do |f|
+  %span= f.label :title, 'Title: '
+  %span= f.text_field :title
+  %br/
+  %span= f.label :description, 'Description: '
+  %span= f.text_field :description
+  %br/
+  %span= f.label :starting_price, 'Starting price: '
+  %span= f.text_field :starting_price
+  %br/
+  %span= f.label :end_date, 'End date: '
+  %span= f.text_field :end_date
+  %br/
+  = f.submit 'Create'
