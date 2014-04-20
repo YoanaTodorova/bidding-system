@@ -1,0 +1,8 @@
+%div{ :id => "show-item-container" }
+  %div{ :id => @item[:id] }
+    %p= @item[:title]
+    %p= @item[:description]
+
+//%p= @data
+
+= link_to 'Go back', items_path

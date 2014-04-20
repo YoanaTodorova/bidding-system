@@ -20,7 +20,7 @@ Bidsys::Application.routes.draw do
   resources :sessions
 
   match '/signout', to: 'sessions#destroy', via: 'delete'
-  
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
