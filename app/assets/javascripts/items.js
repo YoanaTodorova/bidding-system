@@ -8,8 +8,21 @@ var reloadItems = function() {
 
 var ready = function(){
   setTimeout(reloadItems, 10000);
-  setInterval(reloadItems, 30000);
+  var intervalID = setInterval(reloadItems, 30000);
+  // setTimeout(function(){
+  //   clearInterval(intervalID);
+  // }, 120000);
 };
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
+// $(document).ready(function(){
+//   $(document).on('page:change', function(){
+//     var url = document.URL;
+//     if (url.indexOf("items/index") >= 0) {
+//       ready();
+//     }
+//   });
+
+// });
