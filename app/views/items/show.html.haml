@@ -1,8 +1,21 @@
-%div{ :id => "show-item-container" }
+%div
   %div{ :id => @item[:id] }
     %p= @item[:title]
     %p= @item[:description]
+    %p= @item[:starting_price]
+    %p= @item[:start_date]
 
-//%p= @data
+-if can_view_auctions?
+  %div{:id => "show-item-container"}
+    %p
+      Active auctions for this item:
+      %ul
+      - @active_auctions.each do |auction|
+        %li
+          %span= auction[:id]
+          %span= "current highest price: #{@current_highest_prices[auction[:id]]}"
+          = number_field_tag 'price'
+          = link_to "bid", '#'
+
 
 = link_to 'Go back', items_path

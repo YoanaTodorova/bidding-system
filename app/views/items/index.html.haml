@@ -1,10 +1,5 @@
-%p
-  %ul
-  - @items.each do |item|
-    %li
-      %span= link_to item[:title], item_path(item)
-      - if permissions_to_delete? item
-        %span= link_to "Delete", item, method: :delete
+%div{ :id => "items-list" }
+  = render 'items_list', :items => @items
 
 = form_for Item.new do |f|
   %span= f.label :title, 'Title: '

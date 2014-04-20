@@ -11,6 +11,8 @@ Bidsys::Application.routes.draw do
 
   resources :home
 
+  get 'items/refresh' => 'items#refresh', as: :refresh_items
+
   resources :items
 
   resources :users do
