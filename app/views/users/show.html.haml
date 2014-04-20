@@ -1,9 +1,10 @@
 %p= @user[:name]
 %p= @user[:email]
 
-= form_for([@user, Comment.new]) do |f|
-  %p= f.label :content, 'Comment:'
-  %p= f.text_field :content
-  = f.submit
+- if can_comment_on_user? @user
+  = form_for([@user, Comment.new]) do |f|
+    %p= f.label :content, 'Comment:'
+    %p= f.text_field :content
+    = f.submit
 
 = link_to 'Go back', users_path
