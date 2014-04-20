@@ -5,6 +5,7 @@
     %title Bidding system
     = stylesheet_link_tag "applicaion", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "#{params[:controller]}.#{params[:action]}"
     =csrf_meta_tags
 
   %body
