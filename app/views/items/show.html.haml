@@ -6,16 +6,7 @@
     %p= @item[:start_date]
 
 -if can_view_auctions?
-  %div{:id => "show-item-container"}
-    %p
-      Active auctions for this item:
-      %ul
-      - @active_auctions.each do |auction|
-        %li
-          %span= auction[:id]
-          %span= "current highest price: #{@current_highest_prices[auction[:id]]}"
-          = number_field_tag 'price'
-          = link_to "bid", '#'
+  %div{ :id => 'bids-list' }
+    = render 'bids_list', :active_auctions => @active_auctions, :current_highest_prices => @current_highest_prices
 
-
-= link_to 'Go back', items_path
+= link_to 'Go back', :controller => "items", :action => "index"

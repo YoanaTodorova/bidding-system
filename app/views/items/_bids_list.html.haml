@@ -1,0 +1,14 @@
+%p
+  Active auctions for this item:
+  %ul
+  - active_auctions.each do |auction|
+    %li
+      %span= auction[:id]
+      %span= "current highest price: #{current_highest_prices[auction[:id]]}"
+
+      = form_for Bid.new, :html => { :id => 'new_bid_form' } do |f|
+        %span= f.label :price, 'Price: '
+        %span= f.number_field :price
+        = f.hidden_field :auction_id, :value => auction[:id]
+        %br/
+        = f.submit 'Bid'

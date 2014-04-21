@@ -3,4 +3,4 @@
     %li
       %span= link_to item[:title], item_path(item)
       - if permissions_to_delete? item
-        %span= link_to "Delete", item, method: :delete
+        %span= link_to "Delete", item_path(item), method: :delete

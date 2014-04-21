@@ -11,9 +11,16 @@ Bidsys::Application.routes.draw do
 
   resources :home
 
-  get 'items/refresh' => 'items#refresh', as: :refresh_items
-
+  get 'items/refresh' => 'items#refresh'
+  # get 'items/refresh_item_bids' => 'items#refresh_item_bids'
+  # post 'items/refresh_item_bids' => 'items#refresh_item_bids'
+  resource :items do
+    member do
+      post :refresh_item_bids
+    end
+  end
   resources :items
+  resources :bids
 
   resources :users do
     resources :comments

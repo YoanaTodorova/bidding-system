@@ -7,6 +7,24 @@ class ItemsController < ApplicationController
     render :partial => 'items/items_list', :format => 'text/html', :locals => { :items => Item.all }
   end
 
+  def refresh_item_bids
+    # parsed_response = JSON.parse(response.body)
+
+    # logger.debug "parsed_response: #{response.inspect}"
+
+    @item = Item.find params[:id]
+
+    @active_auctions = @item.auctions.where(:status => "active")
+
+    @current_highest_prices = {}
+
+    @active_auctions.each do |auction|
+      @current_highest_prices[auction[:id]] =  auction.bids.maximum(:price) || @item[:starting_price]
+    end
+
+    render :partial => 'items/bids_list', :format => 'text/html', :locals => { :active_auctions => @active_auctions, :current_highest_prices => @current_highest_prices }
+  end
+
   def create
     @user = User.find session[:user_id]
     item = @user.items.build(item_params)
@@ -23,7 +41,7 @@ class ItemsController < ApplicationController
     
     item.auctions.create(:status => "active")
 
-    redirect_to items_path
+    redirect_to :controller => "items", :action => "index"
   end
 
   def show
@@ -47,7 +65,7 @@ class ItemsController < ApplicationController
       @item.destroy
     end
 
-    redirect_to items_path
+    redirect_to :controller => "items", :action => "index"
   end
 
   private
