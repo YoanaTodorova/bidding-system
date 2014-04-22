@@ -35,12 +35,13 @@ $(document).ready(function(){
     //   ready();
     // }
     if (url.search("items/[0-9]") != -1) {
+      var id = url.match("items/([0-9]*)")[1];
       setInterval(function(){
         $.ajax({
           url: "/items/refresh_item_bids",
           type: "POST",
           data: {
-            id: "31"
+            id: id
           },
           success: function(data){
             console.log(data);
