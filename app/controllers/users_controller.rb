@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   private
 
   def can_comment_on_user? user
-    session[:user_id] != user[:id] if session[:user_id]
+    session[:user_id] and session[:user_id] != user[:id]
   end
 
   helper_method :can_comment_on_user?
