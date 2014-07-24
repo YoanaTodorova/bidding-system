@@ -8,6 +8,10 @@
     =csrf_meta_tags
 
   %body
+    %p{ class: "notice" }
+    = notice
+    %p{ class: "alert" }
+    = alert
     %ul
       %li= link_to "Home", controller: "home"
       %li= link_to "Items", controller: "items"
